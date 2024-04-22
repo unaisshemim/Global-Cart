@@ -43,17 +43,15 @@ Before installing Global Cart, ensure you have the following prerequisites:
 
 2.Navigate to the project directory:
 
-    ```bash
     cd global-cart
 
 3.Install dependencies using npm:
 
-    ```bash
     npm install
 
 4.Run the application:
-```bash
-npm run dev
+
+    npm run dev
 
 ## Usage
 
