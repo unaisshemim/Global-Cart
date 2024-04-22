@@ -1,34 +1,68 @@
-# unaiz-cart
+# Global Cart
 
-An Electron application with React and TypeScript
+Global Cart is a web application that allows users to store products from various sources into a centralized cart. Users can add products to their cart from different online stores and monitor price changes over time.
 
-## Recommended IDE Setup
+## Table of Contents
 
-- [VSCode](https://code.visualstudio.com/) + [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) + [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+- [Introduction](#introduction)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
 
-## Project Setup
+## Introduction
 
-### Install
+Global Cart simplifies the online shopping experience by offering a centralized platform for users to manage their purchases from multiple online stores. With the ever-expanding landscape of e-commerce, it can be challenging for consumers to keep track of products across various websites. Global Cart addresses this issue by providing a unified interface where users can add, monitor, and manage their desired items seamlessly.
 
+## Features
+
+    - **Unified Cart**: Users can add products from different online stores into a single cart.
+
+- **Price Monitoring**: Global Cart tracks price changes for added items, allowing users to stay informed about potential discounts or promotions.
+- **Multi-Store Support**: The application supports integration with various online stores, giving users the flexibility to shop from their preferred platforms.
+- **User Accounts**: Users can create accounts to save their cart contents and preferences, enabling a personalized shopping experience.
+- **Notifications**: Users can opt-in to receive notifications about price changes or availability updates for their saved items.
+- **Secure Transactions**: Global Cart ensures secure transactions by employing encryption protocols and adhering to industry-standard security practices.
+
+## Installation
+
+### Prerequisites
+
+Before installing Global Cart, ensure you have the following prerequisites:
+
+- Node.js >=18 installed on your machine
+- npm (Node Package Manager)
+- ### Steps
+
+1. Clone the Global Cart repository from GitHub:
+
+   ```bash
+   git clone https://github.com/your-username/global-cart.git
+   ```
+
+2.Navigate to the project directory:
+
+    ```bash
+    cd global-cart
+
+3.Install dependencies using npm:
+
+    ```bash
+    npm install
+
+4.Run the application:
 ```bash
-$ npm install
-```
+npm run dev
 
-### Development
+## Usage
 
-```bash
-$ npm run dev
-```
+Provide examples or instructions on how to use your project. Include code snippets or screenshots if applicable. Explain any important details or considerations for users.
 
-### Build
+## Contributing
 
-```bash
-# For windows
-$ npm run build:win
+Explain how others can contribute to your project. This could include guidelines for submitting bug reports, feature requests, or pull requests. Provide information on coding standards, testing procedures, and any other relevant details.
 
-# For macOS
-$ npm run build:mac
+## License
 
-# For Linux
-$ npm run build:linux
-```
+Specify the license under which your project is distributed. Include any additional terms or conditions as necessary.
