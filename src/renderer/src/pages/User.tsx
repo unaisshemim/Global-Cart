@@ -1,4 +1,4 @@
-import Cart from '@renderer/components/Cart'
+import UserCard from '@renderer/components/UserTable'
 
 const Users = (): JSX.Element => {
   return (
@@ -8,11 +8,15 @@ const Users = (): JSX.Element => {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          marginTop: 100,
-          height: '100px'
+          marginTop: '20vh',
+
+          width: '100%'
         }}
       >
-        <Cart />
+        <div style={{ width: '40%' }}>
+          <h1>Users</h1>
+          <UserCard />
+        </div>
       </div>
     </>
   )

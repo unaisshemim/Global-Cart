@@ -1,9 +1,9 @@
-import Product from './components/Product'
+import Users from './pages/User'
 
 function App(): JSX.Element {
   return (
     <>
-      <Product />
+      <Users />
     </>
   )
 }
