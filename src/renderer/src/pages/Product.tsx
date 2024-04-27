@@ -7,6 +7,7 @@ const Product = (): JSX.Element => {
   const handleBack = (): void => {
     navigate('/cart')
   }
+
   return (
     <div
       style={{

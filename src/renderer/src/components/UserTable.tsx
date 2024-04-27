@@ -9,24 +9,38 @@ import Paper from '@mui/material/Paper'
 import { Avatar } from '@mui/material'
 import { deepOrange } from '@mui/material/colors'
 import { useNavigate } from 'react-router-dom'
+
 // import DoDisturbIcon from '@mui/icons-material/DoDisturb'
 
 function createData(
   customerDetails: string,
   order: number,
-  status: string
-): { customerDetails: string; order: number; status: string } {
-  return { customerDetails, order, status }
+  status: string,
+  avatar: string
+): { customerDetails: string; order: number; status: string; avatar: string } {
+  return { customerDetails, order, status, avatar }
 }
 
-const rows = [createData('Unais', 1, 'Registered'), createData('Unais', 1, 'Registered')]
+const rows = [
+  createData(
+    'Unais',
+    1,
+    'Registered',
+    'https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg'
+  ),
+  createData(
+    'Safwan',
+    1,
+    'Registered',
+    'https://h5p.org/sites/default/files/h5p/content/1209180/images/file-6113d5f8845dc.jpeg'
+  )
+]
 
 export default function UserCard(): JSX.Element {
   const [selectedRow, setSelectedRow] = useState(null)
   const navigate = useNavigate()
 
-  const handleRowClick = (row): void => {
-    setSelectedRow(row)
+  const handleRowClick = (): void => {
     setTimeout(() => {
       setSelectedRow(null)
     }, 200)
@@ -47,7 +61,7 @@ export default function UserCard(): JSX.Element {
           {rows.map((row) => (
             <TableRow
               key={row.customerDetails}
-              onClick={() => handleRowClick(row)}
+              onClick={handleRowClick}
               sx={{
                 '&:last-child td, &:last-child th': { border: 0 },
                 cursor: 'pointer',
@@ -65,7 +79,7 @@ export default function UserCard(): JSX.Element {
                   '& > *': { marginRight: '8px' }
                 }}
               >
-                <Avatar sx={{ bgcolor: deepOrange[500] }}>N</Avatar>
+                <Avatar sx={{ bgcolor: deepOrange[500] }} src={row.avatar}></Avatar>
                 {row.customerDetails}
               </TableCell>
               <TableCell align="left">{row.order}</TableCell>

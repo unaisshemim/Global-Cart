@@ -8,26 +8,34 @@ import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
 import { Avatar, CircularProgress } from '@mui/material'
 import { deepOrange } from '@mui/material/colors'
-import { useNavigate } from 'react-router-dom'
+
 // import DoDisturbIcon from '@mui/icons-material/DoDisturb'
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline'
 function createData(
   productDetails: string,
   previousPrize: number,
   currentPrize: number,
-  status: boolean
+  status: boolean,
+  websiteLogo: string
 ): {
   productDetails: string
   previousPrize: number
   currentPrize: number
   status: boolean
+  websiteLogo: string
 } {
-  return { productDetails, previousPrize, currentPrize, status }
+  return { productDetails, previousPrize, currentPrize, status, websiteLogo }
 }
 
 const rows = [
-  createData('Amazon', 159, 23, true),
-  createData('Ice cream sandwich', 237, 4324, true)
+  createData('Amazon', 159, 23, true, 'https://www.amazon.in/favicon.ico'),
+  createData(
+    'Flipkart',
+    237,
+    4324,
+    true,
+    'https://i.pinimg.com/736x/aa/70/8d/aa708d1f97a04f6f5a208213f89e1e67.jpg'
+  )
   // createData('Eclair', 262, 234, true),
   // createData('Cupcake', 305, 4324, true),
   // createData('Gingerbread', 356, 234, false)
@@ -35,14 +43,13 @@ const rows = [
 
 export default function ProductTable(): JSX.Element {
   const [selectedRow, setSelectedRow] = useState(null)
-  const navigate = useNavigate()
 
   const handleRowClick = (row): void => {
     setSelectedRow(row)
     setTimeout(() => {
       setSelectedRow(null)
     }, 200)
-    navigate('/cart') // Reset selected row after 1 second
+    // Reset selected row after 1 second
   }
 
   return (
@@ -78,12 +85,12 @@ export default function ProductTable(): JSX.Element {
                   '& > *': { marginRight: '8px' }
                 }}
               >
-                <Avatar sx={{ bgcolor: deepOrange[500] }}>N</Avatar>
+                <Avatar sx={{ bgcolor: deepOrange[500] }} src={row.websiteLogo}></Avatar>
                 {row.productDetails}
               </TableCell>
 
               <TableCell align="left">{row.previousPrize}</TableCell>
-              <TableCell align="left">{row.currentPrize}</TableCell>
+              <TableCell align="left">{row.status ? '--' : row.currentPrize}</TableCell>
               <TableCell align="left">
                 {row.status ? (
                   <CircularProgress color="secondary" size={20} />

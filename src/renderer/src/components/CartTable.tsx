@@ -14,21 +14,24 @@ import { useNavigate } from 'react-router-dom'
 function createData(
   productDetails: string,
   highest: number,
-  lowest: number
+  lowest: number,
+  cartImage: string
 ): {
   productDetails: string
   highest: number
   lowest: number
+  cartImage: string
 } {
-  return { productDetails, highest, lowest }
+  return { productDetails, highest, lowest, cartImage }
 }
 
 const rows = [
-  createData('Frozen ', 159, 23),
-  createData('Ice cream sandwich', 237, 4324),
-  createData('Eclair', 262, 234),
-  createData('Cupcake', 305, 4324),
-  createData('Gingerbread', 356, 234)
+  createData(
+    'Crocs ',
+    2500,
+    3500,
+    'https://www.crocs.in/media/catalog/product/2/0/206935_2zm_alt110.jpg?auto=webp&format=pjpg&width=964&height=800&fit=cover'
+  )
 ]
 
 export default function CardTable(): JSX.Element {
@@ -75,7 +78,9 @@ export default function CardTable(): JSX.Element {
                   '& > *': { marginRight: '8px' }
                 }}
               >
-                <Avatar sx={{ bgcolor: deepOrange[500] }}>N</Avatar>
+                <Avatar sx={{ bgcolor: deepOrange[500] }} src={row.cartImage}>
+                  img
+                </Avatar>
                 {row.productDetails}
               </TableCell>
               <TableCell align="left">{row.lowest}</TableCell>
