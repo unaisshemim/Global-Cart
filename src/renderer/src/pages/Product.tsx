@@ -28,7 +28,6 @@ const Product = (): JSX.Element => {
   })
   const [currentPrizes, setCurrentPrizes] = useState({})
   const [loading, setLoading] = useState(false)
-  const [count, setCount] = useState(0)
 
   const navigate = useNavigate()
   const handleBack = (): void => {
@@ -83,14 +82,14 @@ const Product = (): JSX.Element => {
 
   const fetchCurrentPrices = async (): Promise<void> => {
     const updatedCurrentPrizes = {}
-    const currentCart = JSON.parse(localStorage.getItem('cart') || '{}')
+    const currentCart = await JSON.parse(localStorage.getItem('cart') || '{}')
 
     if (getProducts) {
       for (const row of getProducts as { link: string }[]) {
         try {
           //api request
           const response = await window.gemini.gemini(row.link)
-          setCount(count + 1)
+
           // Assuming the API response contains the current prize information in a certain format
           updatedCurrentPrizes[row.link] = response.prize
 

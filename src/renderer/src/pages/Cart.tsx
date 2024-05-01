@@ -56,6 +56,7 @@ const Cart = (): JSX.Element => {
   useEffect(() => {
     setGetCart(JSON.parse(localStorage.getItem('cart') || '[]'))
   }, [])
+  console.log(getCart.length > 0)
 
   return (
     <div
@@ -84,6 +85,7 @@ const Cart = (): JSX.Element => {
             size="small"
             sx={{ height: 40 }}
             onClick={handleOpen}
+            disabled={getCart.length > 0}
           >
             Add
           </Button>
