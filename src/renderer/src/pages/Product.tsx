@@ -6,7 +6,7 @@ import Box from '@mui/material/Box'
 import Modal from '@mui/material/Modal'
 import { useNavigate } from 'react-router-dom'
 import PlayArrowIcon from '@mui/icons-material/PlayArrow'
-import axios from 'axios'
+
 import amazon from '../assets/amazon.jpg'
 import flipkart from '../assets/flipkart.jpg'
 import ajio from '../assets/ajio.jpg'
@@ -28,6 +28,7 @@ const Product = (): JSX.Element => {
   })
   const [currentPrizes, setCurrentPrizes] = useState({})
   const [loading, setLoading] = useState(false)
+  const [count, setCount] = useState(0)
 
   const navigate = useNavigate()
   const handleBack = (): void => {
@@ -82,29 +83,72 @@ const Product = (): JSX.Element => {
 
   const fetchCurrentPrices = async (): Promise<void> => {
     const updatedCurrentPrizes = {}
+    const currentCart = JSON.parse(localStorage.getItem('cart') || '{}')
+
     if (getProducts) {
       for (const row of getProducts as { link: string }[]) {
-        console.log(row)
         try {
-          const response = await axios.post('http://localhost:3000/getprize', { link: row.link })
+          //api request
+          const response = await window.gemini.gemini(row.link)
+          setCount(count + 1)
           // Assuming the API response contains the current prize information in a certain format
-          updatedCurrentPrizes[row.link] = response.data.prize
-          setCurrentPrizes(updatedCurrentPrizes)
+          updatedCurrentPrizes[row.link] = response.prize
+
+          const newPrize = parseInt(response.prize)
+          // Extract lowestPrize and highestPrize values
+          const lowestPrize = parseInt(currentCart[0].lowestPrize)
+          const highestPrize = parseInt(currentCart[0].highestPrize)
+
+          if (lowestPrize === 0 && highestPrize === 0) {
+            currentCart[0].lowestPrize = newPrize.toString()
+            currentCart[0].highestPrize = newPrize.toString()
+          }
+          if (newPrize > highestPrize) {
+            currentCart[0].highestPrize = response.prize
+          }
+          if (newPrize < lowestPrize) {
+            currentCart[0].lowestPrize = response.prize
+          }
+
+          // Update the lastPrize for the product in local storage
+          const existingProductItems = JSON.parse(localStorage.getItem('products') || '[]')
+          const updatedProductItems = existingProductItems.map((product) => {
+            if (product.link === row.link) {
+              return {
+                ...product,
+                lastPrize: response.prize
+              }
+            }
+            return product
+          })
+          // setCurrentPrizes(updatedCurrentPrizes)
+          setCurrentPrizes((prevCurrentPrizes) => ({
+            ...prevCurrentPrizes,
+            [row.link]: response.prize
+          }))
+          localStorage.setItem('products', JSON.stringify(updatedProductItems))
         } catch (error) {
           console.error('Error fetching current prize:', error)
         }
       }
+      // Set the updated cart back to local storage
+      localStorage.setItem('cart', JSON.stringify(currentCart))
     }
   }
-  const handleStart = (): void => {
-    setLoading(true)
-    fetchCurrentPrices()
+
+  const handleStart = async (): Promise<void> => {
+    try {
+      setLoading(true)
+      await fetchCurrentPrices()
+    } catch (error) {
+      setLoading(false)
+    }
     setLoading(false)
   }
+
   useEffect(() => {
     setGetProducts(JSON.parse(localStorage.getItem('products') || '[]'))
   }, [])
-  useEffect(() => {}, [currentPrizes])
 
   return (
     <div
@@ -146,6 +190,7 @@ const Product = (): JSX.Element => {
           size="small"
           sx={{ height: 40, color: 'white', borderColor: 'white', bgcolor: 'green' }}
           onClick={handleStart}
+          disabled={loading}
         >
           Start
         </Button>

@@ -10,7 +10,7 @@ import { Avatar, CircularProgress } from '@mui/material'
 // import DoDisturbIcon from '@mui/icons-material/DoDisturb'
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline'
 import FlagIcon from '@mui/icons-material/Flag'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 interface ProductTableProps {
   data: {
     link: string
@@ -26,11 +26,10 @@ export default function ProductTable({
   currentPrizes,
   loading
 }: ProductTableProps): JSX.Element {
-  const [prize, setPrize] = useState({})
-  console.log(currentPrizes)
   useEffect(() => {
-    setPrize(currentPrizes)
+    console.log(currentPrizes)
   }, [currentPrizes])
+
   return (
     <TableContainer component={Paper} sx={{ height: 500 }}>
       <Table sx={{ minWidth: 550 }} aria-label="simple table">
@@ -69,7 +68,9 @@ export default function ProductTable({
 
               <TableCell align="left">{row.lastPrize}</TableCell>
               <TableCell align="left">
-                {prize[row.link] === null || prize[row.link] === undefined ? '-' : prize[row.link]}
+                {currentPrizes[row.link] === null || currentPrizes[row.link] === undefined
+                  ? '-'
+                  : currentPrizes[row.link]}
               </TableCell>
               <TableCell align="left">
                 {loading &&
