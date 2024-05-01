@@ -63,12 +63,10 @@ const Cart = (): JSX.Element => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: '45vh',
-        height: '100px',
-        width: '100%'
+        marginTop: '8vh'
       }}
     >
-      <div style={{ width: '40%' }}>
+      <div style={{ width: '70%' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <Button
             variant="outlined"

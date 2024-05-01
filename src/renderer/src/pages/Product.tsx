@@ -156,13 +156,11 @@ const Product = (): JSX.Element => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: '45vh',
-        height: '100px',
-        width: '100%'
+        marginTop: '8vh'
       }}
     >
-      <div style={{ width: '40%', display: 'flex', flexDirection: 'column' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <div style={{ width: '70%', display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
           <Button
             variant="outlined"
             startIcon={<ArrowBack />}

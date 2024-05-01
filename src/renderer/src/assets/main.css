@@ -1,7 +1,6 @@
 @import './base.css';
 
 body {
-  
   overflow: hidden;
   background-image: url('./wavy-lines.svg');
   background-size: cover;
@@ -25,8 +24,6 @@ code {
 }
 
 #root {
- 
-  
   margin-bottom: 80px;
 }
 
