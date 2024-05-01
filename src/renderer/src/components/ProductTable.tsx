@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
 import TableCell from '@mui/material/TableCell'
@@ -7,51 +6,31 @@ import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
 import { Avatar, CircularProgress } from '@mui/material'
-import { deepOrange } from '@mui/material/colors'
 
 // import DoDisturbIcon from '@mui/icons-material/DoDisturb'
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline'
-function createData(
-  productDetails: string,
-  previousPrize: number,
-  currentPrize: number,
-  status: boolean,
-  websiteLogo: string
-): {
-  productDetails: string
-  previousPrize: number
-  currentPrize: number
-  status: boolean
-  websiteLogo: string
-} {
-  return { productDetails, previousPrize, currentPrize, status, websiteLogo }
+import FlagIcon from '@mui/icons-material/Flag'
+import { useEffect, useState } from 'react'
+interface ProductTableProps {
+  data: {
+    link: string
+    lastPrize: number
+    website: string
+    logo: string
+  }[]
+  currentPrizes: object
+  loading: boolean
 }
-
-const rows = [
-  createData('Amazon', 159, 23, true, 'https://www.amazon.in/favicon.ico'),
-  createData(
-    'Flipkart',
-    237,
-    4324,
-    true,
-    'https://i.pinimg.com/736x/aa/70/8d/aa708d1f97a04f6f5a208213f89e1e67.jpg'
-  )
-  // createData('Eclair', 262, 234, true),
-  // createData('Cupcake', 305, 4324, true),
-  // createData('Gingerbread', 356, 234, false)
-]
-
-export default function ProductTable(): JSX.Element {
-  const [selectedRow, setSelectedRow] = useState(null)
-
-  const handleRowClick = (row): void => {
-    setSelectedRow(row)
-    setTimeout(() => {
-      setSelectedRow(null)
-    }, 200)
-    // Reset selected row after 1 second
-  }
-
+export default function ProductTable({
+  data,
+  currentPrizes,
+  loading
+}: ProductTableProps): JSX.Element {
+  const [prize, setPrize] = useState({})
+  console.log(currentPrizes)
+  useEffect(() => {
+    setPrize(currentPrizes)
+  }, [currentPrizes])
   return (
     <TableContainer component={Paper} sx={{ height: 500 }}>
       <Table sx={{ minWidth: 550 }} aria-label="simple table">
@@ -64,14 +43,13 @@ export default function ProductTable(): JSX.Element {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {data.map((row) => (
             <TableRow
-              key={row.productDetails}
-              onClick={() => handleRowClick(row)}
+              key={row.link}
               sx={{
                 '&:last-child td, &:last-child th': { border: 0 },
                 cursor: 'pointer',
-                backgroundColor: selectedRow === row ? 'rgba(0, 0, 0, 0.08)' : 'inherit',
+                backgroundColor: 'inherit',
                 transition: 'background-color 0.5s ease'
               }}
             >
@@ -85,17 +63,23 @@ export default function ProductTable(): JSX.Element {
                   '& > *': { marginRight: '8px' }
                 }}
               >
-                <Avatar sx={{ bgcolor: deepOrange[500] }} src={row.websiteLogo}></Avatar>
-                {row.productDetails}
+                <Avatar sx={{ bgcolor: 'white' }} src={row.logo}></Avatar>
+                {row.website}
               </TableCell>
 
-              <TableCell align="left">{row.previousPrize}</TableCell>
-              <TableCell align="left">{row.status ? '--' : row.currentPrize}</TableCell>
+              <TableCell align="left">{row.lastPrize}</TableCell>
               <TableCell align="left">
-                {row.status ? (
+                {prize[row.link] === null || prize[row.link] === undefined ? '-' : prize[row.link]}
+              </TableCell>
+              <TableCell align="left">
+                {loading &&
+                (currentPrizes[row.link] === undefined || currentPrizes[row.link] === null) ? ( // If loading is true and current prize is not available
                   <CircularProgress color="secondary" size={20} />
-                ) : (
+                ) : currentPrizes[row.link] ? ( // If current prize exists (truthy)
                   <CheckCircleOutlineIcon sx={{ color: 'green' }} />
+                ) : (
+                  // If current prize doesn't exist (falsy)
+                  <FlagIcon sx={{ color: 'red' }} />
                 )}
               </TableCell>
             </TableRow>

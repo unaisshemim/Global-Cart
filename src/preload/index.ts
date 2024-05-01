@@ -1,4 +1,4 @@
-import { contextBridge, ipcRenderer } from 'electron'
+import { contextBridge } from 'electron'
 import { electronAPI } from '@electron-toolkit/preload'
 
 // Custom APIs for renderer
@@ -9,8 +9,9 @@ const api = {}
 // just add to the DOM global.
 if (process.contextIsolated) {
   try {
-    contextBridge.exposeInMainWorld('electron', electronAPI)
     contextBridge.exposeInMainWorld('api', api)
+
+    contextBridge.exposeInMainWorld('electron', api)
   } catch (error) {
     console.error(error)
   }
@@ -20,7 +21,3 @@ if (process.contextIsolated) {
   // @ts-ignore (define in dts)
   window.api = api
 }
-
-contextBridge.exposeInMainWorld('electronAPI', {
-  loadPreferences: () => ipcRenderer.invoke('load-prefs')
-})

@@ -11,30 +11,16 @@ import { deepOrange } from '@mui/material/colors'
 import { useNavigate } from 'react-router-dom'
 // import DoDisturbIcon from '@mui/icons-material/DoDisturb'
 
-function createData(
-  productDetails: string,
-  highest: number,
-  lowest: number,
-  cartImage: string
-): {
-  productDetails: string
-  highest: number
-  lowest: number
-  cartImage: string
-} {
-  return { productDetails, highest, lowest, cartImage }
+interface CartTableProps {
+  data: {
+    name: string
+    image: string
+    lowestPrize: number
+    highestPrize: number
+  }[]
 }
 
-const rows = [
-  createData(
-    'Crocs ',
-    2500,
-    3500,
-    'https://www.crocs.in/media/catalog/product/2/0/206935_2zm_alt110.jpg?auto=webp&format=pjpg&width=964&height=800&fit=cover'
-  )
-]
-
-export default function CardTable(): JSX.Element {
+export default function CardTable({ data }: CartTableProps): JSX.Element {
   const [selectedRow, setSelectedRow] = useState(null)
   const navigate = useNavigate()
 
@@ -57,9 +43,9 @@ export default function CardTable(): JSX.Element {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {data.map((row) => (
             <TableRow
-              key={row.productDetails}
+              key={row.name}
               onClick={() => handleRowClick(row)}
               sx={{
                 '&:last-child td, &:last-child th': { border: 0 },
@@ -78,13 +64,13 @@ export default function CardTable(): JSX.Element {
                   '& > *': { marginRight: '8px' }
                 }}
               >
-                <Avatar sx={{ bgcolor: deepOrange[500] }} src={row.cartImage}>
+                <Avatar sx={{ bgcolor: deepOrange[500] }} src={row.image}>
                   img
                 </Avatar>
-                {row.productDetails}
+                {row.name}
               </TableCell>
-              <TableCell align="left">{row.lowest}</TableCell>
-              <TableCell align="left">{row.highest}</TableCell>
+              <TableCell align="left">{row.lowestPrize}</TableCell>
+              <TableCell align="left">{row.highestPrize}</TableCell>
             </TableRow>
           ))}
         </TableBody>

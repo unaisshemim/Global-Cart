@@ -2,6 +2,7 @@ import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
+import axios from 'axios'
 
 function createWindow(): void {
   // Create the browser window.
@@ -51,7 +52,10 @@ app.whenReady().then(() => {
   })
 
   // IPC test
-  ipcMain.on('ping', () => console.log('pong'))
+  ipcMain.on('ping', async () => {
+    const hi = await axios.get('https://api.thecatapi.com/v1/images/search')
+    return hi.data
+  })
 
   createWindow()
 
