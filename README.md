@@ -93,12 +93,3 @@ Finally You can See the Current prizes of product in each websites
     <img src="https://firebasestorage.googleapis.com/v0/b/flutter-project-79a95.appspot.com/o/product_fetched.png?alt=media&token=f69b260f-5395-4588-9494-020baa4cab59" alt="Unicart Banner">
   </a>
 </p>
-
-
-## Contributing
-
-Explain how others can contribute to your project. This could include guidelines for submitting bug reports, feature requests, or pull requests. Provide information on coding standards, testing procedures, and any other relevant details.
-
-## License
-
-Specify the license under which your project is distributed. Include any additional terms or conditions as necessary.
