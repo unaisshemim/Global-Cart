@@ -27,12 +27,6 @@ const rows = [
     1,
     'Registered',
     'https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg'
-  ),
-  createData(
-    'Safwan',
-    1,
-    'Registered',
-    'https://h5p.org/sites/default/files/h5p/content/1209180/images/file-6113d5f8845dc.jpeg'
   )
 ]
 
