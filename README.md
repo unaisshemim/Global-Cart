@@ -1,3 +1,4 @@
+[![Unicart Banner]([https://cdn.freecodecamp.org/platform/universal/fcc_banner_new.png](https://firebasestorage.googleapis.com/v0/b/flutter-project-79a95.appspot.com/o/WhatsApp%20Image%202024-05-02%20at%2012.00.19%20PM.jpeg?alt=media&token=728d59f1-3d6c-45d8-8dea-fba960282985))]
 # Global Cart
 
 Global Cart is a web application that allows users to store products from various sources into a centralized cart. Users can add products to their cart from different online stores and monitor price changes over time.
