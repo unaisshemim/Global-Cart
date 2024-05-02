@@ -1,4 +1,7 @@
-[![Unicart Banner](https://firebasestorage.googleapis.com/v0/b/flutter-project-79a95.appspot.com/o/WhatsApp%20Image%202024-05-02%20at%2012.00.19%20PM.jpeg?alt=media&token=728d59f1-3d6c-45d8-8dea-fba960282985)](https://www.freecodecamp.org/)
+<div style="text-align:center;">
+  [![Unicart Banner](https://firebasestorage.googleapis.com/v0/b/flutter-project-79a95.appspot.com/o/WhatsApp%20Image%202024-05-02%20at%2012.00.19%20PM.jpeg?alt=media&token=728d59f1-3d6c-45d8-8dea-fba960282985)](https://www.freecodecamp.org/)
+</div>
+
 
 # Global Cart
 
