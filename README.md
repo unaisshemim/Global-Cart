@@ -24,8 +24,8 @@ Global Cart simplifies the online shopping experience by offering a centralized 
 
 ## Features
 
-    - **Unified Cart**: Users can add products from different online stores into a single cart.
-
+     
+-  **Unified Cart**: Users can add products from different online stores into a single cart.
 - **Price Monitoring**: Global Cart tracks price changes for added items, allowing users to stay informed about potential discounts or promotions.
 - **Multi-Store Support**: The application supports integration with various online stores, giving users the flexibility to shop from their preferred platforms.
 - **User Accounts**: Users can create accounts to save their cart contents and preferences, enabling a personalized shopping experience.
@@ -45,7 +45,7 @@ Before installing Global Cart, ensure you have the following prerequisites:
 1. Clone the Global Cart repository from GitHub:
 
    ```bash
-   git clone https://github.com/your-username/global-cart.git
+   git clone git@github.com:unaisshemim/UNICART.git
    ```
 
 2.Navigate to the project directory:
@@ -61,8 +61,39 @@ Before installing Global Cart, ensure you have the following prerequisites:
     npm run dev
 
 ## Usage
+After You run the Application Select the User.
+<p align="center">
+  <a href="https://www.freecodecamp.org/">
+    <img src="https://firebasestorage.googleapis.com/v0/b/flutter-project-79a95.appspot.com/o/user.png?alt=media&token=7093d255-da7b-4658-9625-1c31fc367c91" alt="Unicart Banner">
+  </a>
+</p>
+Add a new Product to the Cart and give the random name and image link to  find products easily.
+<p align="center">
+  <a href="https://www.freecodecamp.org/">
+    <img src="https://firebasestorage.googleapis.com/v0/b/flutter-project-79a95.appspot.com/o/cartadding.png?alt=media&token=41df72d5-3dab-4e20-8ae9-6b46084f2f14" alt="Unicart Banner">
+  </a>
+</p>
 
-Provide examples or instructions on how to use your project. Include code snippets or screenshots if applicable. Explain any important details or considerations for users.
+
+Then Add the Products from different Websites
+<p align="center">
+  <a href="https://www.freecodecamp.org/">
+    <img src="https://firebasestorage.googleapis.com/v0/b/flutter-project-79a95.appspot.com/o/product_adding.png?alt=media&token=71675b9c-8438-484e-871b-6dbb84d2fcce" alt="Unicart Banner">
+  </a>
+</p>
+Click the Start Button Fetech current Prize .
+<p align="center">
+  <a href="https://www.freecodecamp.org/">
+    <img src="https://firebasestorage.googleapis.com/v0/b/flutter-project-79a95.appspot.com/o/produc_loading.png?alt=media&token=3ca9e8ca-4db6-4711-af3b-078ad68a1b3f" alt="Unicart Banner">
+  </a>
+</p>
+Finally You can See the Current prizes of product in each websites
+<p align="center">
+  <a href="https://www.freecodecamp.org/">
+    <img src="https://firebasestorage.googleapis.com/v0/b/flutter-project-79a95.appspot.com/o/product_fetched.png?alt=media&token=f69b260f-5395-4588-9494-020baa4cab59" alt="Unicart Banner">
+  </a>
+</p>
+
 
 ## Contributing
 
