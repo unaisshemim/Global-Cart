@@ -29,8 +29,6 @@ UNICART simplifies the online shopping experience by offering a centralized plat
 - **Price Monitoring**: UNICART tracks price changes for added items, allowing users to stay informed about potential discounts or promotions.
 - **Multi-Store Support**: The application supports integration with various online stores, giving users the flexibility to shop from their preferred platforms.
 - **User Accounts**: Users can create accounts to save their cart contents and preferences, enabling a personalized shopping experience.
-- **Notifications**: Users can opt-in to receive notifications about price changes or availability updates for their saved items.
-- **Secure Transactions**: UNICART ensures secure transactions by employing encryption protocols and adhering to industry-standard security practices.
 
 ## Installation
 
@@ -56,9 +54,9 @@ Before installing UNICART, ensure you have the following prerequisites:
 3.Install dependencies using npm:
 
     npm install
-4.Add Gemini Api to the env variable:
+4.Add Gemini Api to the .env file:
 
-    GEMINI_API=""
+    GEMINI_API= ""
     
 5.Run the application:
 
